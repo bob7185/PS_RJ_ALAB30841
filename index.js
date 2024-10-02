@@ -26,19 +26,30 @@ for (let character of str) {
 // we're using the regex to choose the comma or the new line as a delimiter.
 const table1 = str.split(/,|\n/);
 let number_of_row = table1.length / number_of_column;
-const table2 =[number_of_row];
+const table2 = [];
 let index = 0;
 
-for (let row = 0; row < number_of_row; row++)
-{
-    table2[row] = []
-    for(let col = 0; col < number_of_column; col++  )
-    {
+for (let row = 0; row < number_of_row; row++) {
+    table2[row] = [];
+    for (let col = 0; col < number_of_column; col++) {
         table2[row][col] = table1[index];
         index++;
     }
 }
-console.log(table2)
+console.log(table2);
 
 //=============================Part3=====================
 console.log("================================Part3==================")
+const table3 = [];
+// we start looping in row 1 since the first row is the heading
+for (let row = 1; row < number_of_row; row++) {
+    let obj = {};  // create a new object
+    for (let key_number = 0; key_number < number_of_column; key_number++) {
+        obj[table2[0][key_number]] = table2[row][key_number];
+    }
+    table3[row - 1] = obj;  // updates table3 with the new object value
+}
+console.log(table3);
+
+//=============================Part4 ==================================
+console.log("==================================Part4======================")
