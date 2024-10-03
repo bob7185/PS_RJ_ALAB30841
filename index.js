@@ -45,7 +45,8 @@ const table3 = [];
 for (let row = 1; row < number_of_row; row++) {
     let obj = {};  // create a new object
     for (let key_number = 0; key_number < number_of_column; key_number++) {
-        obj[table2[0][key_number]] = table2[row][key_number];
+        //let  key = table2[0][key_number];
+        obj[table2[0][key_number].toLowerCase()] = table2[row][key_number];
     }
     table3[row - 1] = obj;  // updates table3 with the new object value
 }
@@ -53,3 +54,19 @@ console.log(table3);
 
 //=============================Part4 ==================================
 console.log("==================================Part4======================")
+ table3.pop(); // removed the last item from the array 
+ console.log(table3);
+ //inserting { id: "48", name: "Barry", occupation: "Runner", age: "25" } at index 1
+ table3[1] = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+ console.log(table3);
+ //adding { id: "7", name: "Bilbo", occupation: "None", age: "111" } to the end of the array
+ table3.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+ console.log(table3);
+
+ let total_age = 0;
+ for(let i = 0; i < table3.length; i++)
+ {
+    total_age += Number(table3[i]["age"]);
+ }
+ let average = total_age / table3.length;
+ console.log(`Average age of the members: ${average}`);
